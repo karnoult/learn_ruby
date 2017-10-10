@@ -11,7 +11,7 @@ def translate_word(word)
 	
 	single_phoneme.each do |phoneme|
 		
-		start_with_phoneme = phoneme if word.start_with?(phoneme)
+	start_with_phoneme = phoneme if word.start_with?(phoneme)
 		if(start_with_phoneme == "" && !is_vowel(word[0]))
 			start_with_phoneme = word[0] + phoneme if word[1..word.size].start_with?(phoneme)
 		end
