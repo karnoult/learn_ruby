@@ -1,22 +1,30 @@
 def is_vowel(letter)
-	return ["a", "e", "i", "o", "u"].include? letter
+	return ["a", "e", "i", "o", "u", "y"].include? letter
 end
 
-def translate_word(word)
+#Identify phoneme and count it as a consonant even when it's preceded by a consonant
+def update_if_phoneme(word)
 
 	single_phoneme = ["qu"]
+
 	start_with_phoneme = ""
 
-	my_word = ""
-	
 	single_phoneme.each do |phoneme|
 		
 		start_with_phoneme = phoneme if word.start_with?(phoneme)
 		if(start_with_phoneme == "" && !is_vowel(word[0]))
 			start_with_phoneme = word[0] + phoneme if word[1..word.size].start_with?(phoneme)
 		end
-		
+
 	end
+
+	return start_with_phoneme
+
+end
+
+def translate_word(word)
+
+	my_word = update_if_phoneme(word)
 
 	if start_with_phoneme != ""
 		my_word = word[start_with_phoneme.size..word.size] + start_with_phoneme + "ay"

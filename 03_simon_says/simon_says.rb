@@ -19,21 +19,20 @@ def first_word(welcome)
 end
 
 def titleize_firstletter(word)
-	return word.chars[0].upcase + word.chars[1..word.size].join
+	return word[0].upcase + word[1..word.size]
 end
 
 def titleize(welcome)
 	
 	little_words = ["the", "and", "over"]
-	final_word = ""
+	final_word = welcome.split(" ")
 
-	welcome.split(" ").each do |word|
-		if final_word.size == 0 || !little_words.include?(word)
-			final_word += titleize_firstletter(word) + " "
-		else
-			final_word += word + " "
-		end
+	final_word.each do |word|
+		word.capitalize! if !little_words.include?(word)
 	end
-	return final_word.rstrip
+
+	final_word[0].capitalize!
+
+	return final_word.join(" ")
 
 end

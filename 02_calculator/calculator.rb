@@ -12,9 +12,7 @@ end
 
 def multiply(numbers)
 	total = 1
-	numbers.each do |number|
-		total *= number
-	end
+	numbers.each { |number| total *= number }
 	return total
 end
 
